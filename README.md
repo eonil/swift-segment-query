@@ -1,5 +1,5 @@
-DynamicSegmentQuery
-==================
+SegmentQuery
+============
 Eonil, 2019.
 
 Dynamically stores additive values and get arbitrary sub-range sums in O(log(n)) time.
@@ -43,11 +43,11 @@ Performance
 -----------------
 For single item insert/remove at random location,
 
-With list of 1 128K 8-byte integer values,
+With list of 1 128K 8-byte random integer values,
 - 4x faster than `Swift.Array`.
 - Comparable with `BTree.List`(by Lőrentey). Quite close benchmark numbers.
 
-With list of 1 million 8-byte integer values,
+With list of 1 million 8-byte random integer values,
 - 4x faster* than `BTree.List`(by Lőrentey).
 
 *`BTree.List` is faster if insertion is done sequentially.
@@ -65,4 +65,7 @@ Name
 I chose `SegmentQuery` because it explains well what it does.
 Trees providing this kind of query are also known as Segment Tree, Interval tree or Binary indexing Tree.
 Differences of them are subtle and it seems there is no globally agreed single term.
+
+
+
 
