@@ -20,7 +20,7 @@ assert(s == 222+333)
 
 /// Get start/end offsets of a segment 1.
 let a = x[..<1].sum
-let b = x[1...].sum
+let b = x[...1].sum
 let c = a..<b
 
 /// Get index of segment and offset from segment starting point.
