@@ -271,10 +271,6 @@ struct Node1<T:AdditiveArithmetic> {
 extension Node1 where T:Comparable {
     func findOffsetLocation(of pointInSum:T) -> (offset:Int, suboffset:T) {
         assert(pointInSum <= sum)
-        if pointInSum == sum {
-            if isBranch { return (nodes.count-1, nodes.last!.get(at: nodes.last!.count-1)) }
-            else { return (elems.count-1, elems.last!) }
-        }
         if isBranch {
             var c = 0
             var s = T.zero
@@ -292,6 +288,13 @@ extension Node1 where T:Comparable {
                 c += nc
                 s = b
             }
+            assert(s == pointInSum)
+            if nodes.isEmpty {
+                return (0,.zero)
+            }
+            else {
+                return (nodes.count-1, nodes.last!.sum)
+            }
         }
         else {
             var s = T.zero
@@ -304,8 +307,14 @@ extension Node1 where T:Comparable {
                 }
                 s += x
             }
+            assert(s == pointInSum)
+            if elems.isEmpty {
+                return (0,.zero)
+            }
+            else {
+                return (elems.count-1, elems.last!)
+            }
         }
-        fatalError("Bad point.")
     }
 }
 

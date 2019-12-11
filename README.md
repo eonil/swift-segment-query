@@ -41,22 +41,29 @@ Complexity
 
 Performance
 -----------------
-For single item insert/remove at random location,
+I couldn't find other segment query library written in Swift for comparison.
+Instead, I performed insert/remove performance comparison
+with *[well-known B-Tree library written by Lőrentey](https://github.com/attaswift/BTree)*.
+This is one-by-one random `Int` number insert/remove at random location on 64-bit macOS,
 
-With list of 1 128K 8-byte random integer values,
+With list of 128K values,
 - 4x faster than `Swift.Array`.
-- Comparable with `BTree.List`(by Lőrentey). Quite close benchmark numbers.
+- Very close speed to `BTree.List`.
 
-With list of 1 million 8-byte random integer values,
-- 4x faster* than `BTree.List`(by Lőrentey).
+With list of 1 million values,
+- 4x faster* than `BTree.List`.
+- `BTree.List` is faster if insertion is done sequentially
+  as it's been optimized for appending.
 
-*`BTree.List` is faster if insertion is done sequentially.
+Run `SegmentQueryBenchmark` to get numbers on your machine.
 
 
 
 Implementation
 -------------------
-- B-Tree based. But no key is stored. Only values. Values are stored only on leafs.
+- B-Tree based with no key stored. 
+- Only values are stored. 
+- Values are stored only on leafs.
 
 
 
@@ -68,4 +75,19 @@ Differences of them are subtle and it seems there is no globally agreed single t
 
 
 
+Missing Features
+---------------------
+- Bulk insert/remove implementation.
+- Sequential element iteration in O(n) time. Now it's O(n log n).
+- Sub-sum indexing in each node. 
+  We can store sub-sum for each branch/leaf node children 
+  to perform binary search to get an item. 
+  There is a trade-off, but I didn't try due to lack of time.
 
+
+
+
+Credit & License
+---------------------
+Copyright(C) Eonil 2019. All rights reserved.
+Using of this code is licensed under "MIT License".
