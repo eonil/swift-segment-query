@@ -26,4 +26,19 @@ final class SegmentQueryTests: XCTestCase {
         XCTAssertEqual(a.index, 0)
         XCTAssertEqual(a.suboffset, 0)
     }
+    func test4() {
+        var x = SegmentQuery<Int>()
+        x.append(4)
+        x.append(3)
+        XCTAssertEqual(x[...].sum, 7)
+    }
+    func test5() {
+        var x = SegmentQuery<Int>()
+        x.append(0)
+        XCTAssertEqual(x[...].sum, 0)
+        x[0] = 4
+        XCTAssertEqual(x[...].sum, 4)
+        x.append(3)
+        XCTAssertEqual(x[...].sum, 7)
+    }
 }

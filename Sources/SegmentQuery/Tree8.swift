@@ -124,6 +124,8 @@ struct Node1<T:AdditiveArithmetic> {
         }
     }
     func get(at offset:Int) -> T {
+        precondition(0 <= offset)
+        precondition(offset < count)
         if isBranch {
             let (i,suboffset) = Node1.project(offset, into: nodes, totalElemCount: count)
             return nodes[i].get(at: suboffset)
@@ -132,13 +134,24 @@ struct Node1<T:AdditiveArithmetic> {
             return elems[offset]
         }
     }
-    mutating func set(_ x:T, at offset:Int) {
+    /// Sets a new value `x` at `offset` and returns old value at the `offset`.
+    @discardableResult
+    mutating func set(_ x:T, at offset:Int) -> T {
+        precondition(0 <= offset)
+        precondition(offset < count)
         if isBranch {
             let (i,suboffset) = Node1.project(offset, into: nodes, totalElemCount: count)
-            nodes[i].set(x, at: suboffset)
+            let z = nodes[i].set(x, at: suboffset)
+            sum -= z
+            sum += x
+            return z
         }
         else {
+            let z = elems[offset]
             elems[offset] = x
+            sum -= z
+            sum += x
+            return z
         }
     }
     
