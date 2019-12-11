@@ -14,8 +14,14 @@ I'm not sure which one is correct name.
 
 How to Use
 --------------
-
+Add dependency.
 ```swift
+.package(url: "https://github.com/eonil/swift-segment-query", .branch("master")),
+```
+
+And use.
+```swift
+import SegmentQuery
 
 var x = SegmentQuery<Int>()
 
@@ -35,8 +41,14 @@ let c = a..<b
 let (a,b) = x.location(at: 230)
 assert(a == 1)
 assert(b == 8)
-
 ``` 
+
+
+
+Requirements
+-----------------
+- Swift 5.x.
+- Swift Package Manager.
 
 
 
