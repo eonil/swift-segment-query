@@ -2,6 +2,8 @@ SegmentQuery
 ============
 Eonil, 2019.
 
+[![Build Status](https://api.travis-ci.org/eonil/swift-segment-query.svg)](https://travis-ci.org/eonil/swift-segment-query)
+
 Dynamically stores additive values and get arbitrary sub-range sums in O(log(n)) time.
 
 This is an implementation of something called "segment-tree" or "interval-tree".
