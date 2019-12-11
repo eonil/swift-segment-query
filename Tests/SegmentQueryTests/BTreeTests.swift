@@ -1,28 +1,23 @@
-//import XCTest
-//@testable import BTree
-//
-//final class BTreeTests: XCTestCase {
-//    func testExample() {
-//        var x = Tree3<Int>()
-//        x.insert(111, at: 0)
-//        x.insert(222, at: 1)
-//        x.insert(333, at: 2)
-//        XCTAssertEqual(x.get(at: 0), 111)
-//        XCTAssertEqual(x.get(at: 1), 222)
-//        XCTAssertEqual(x.get(at: 2), 333)
-//    }
-//    func testInsert13Elements() {
-//        var a = Array<Int>()
-//        var b = BTList<Int>()
-//        for _ in 0..<12 {
-//            a.append(111)
-//            b.append(111)
-//            XCTAssertEqual(a, Array(b))
-//            guard a == Array(b) else { return }
-//        }
-//    }
-//
-//    static var allTests = [
-//        ("testExample", testExample),
-//    ]
-//}
+import XCTest
+@testable import SegmentQuery
+
+final class BTreeTests: XCTestCase {
+    func test1() {
+        var x = SegmentQuery<Int>()
+        x.insert(111, at: 0)
+        x.insert(222, at: 1)
+        x.insert(333, at: 2)
+        XCTAssertEqual(x[0], 111)
+        XCTAssertEqual(x[1], 222)
+        XCTAssertEqual(x[2], 333)
+    }
+    func test2() {
+        var x = SegmentQuery<Int>()
+        x.insert(111, at: 0)
+        x.insert(222, at: 1)
+        x.insert(333, at: 2)
+        let a = x.location(at: 666)
+        XCTAssertEqual(a.index, 2)
+        XCTAssertEqual(a.suboffset, 333)
+    }
+}

@@ -29,6 +29,6 @@ let package = Package(
         .target(name: "SegmentQueryFuzz", dependencies: ["SegmentQuery", "TestUtil"]),
         .target(name: "SegmentQueryFuzzOptimized", dependencies: ["SegmentQuery", "TestUtil"]),
         .target(name: "SegmentQueryBenchmark", dependencies: ["SegmentQuery", "TestUtil", "SBTL", "BTree"]),
-//        .testTarget(name: "SegmentQueryTests", dependencies: ["SegmentQuery"]),
+        .testTarget(name: "SegmentQueryTests", dependencies: ["SegmentQuery"]),
     ]
 )
