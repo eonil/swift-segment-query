@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import TestUtil
+import SegmentQueryTestUtil
 @testable import SegmentQuery
 
 func fuzzSubSum(_ n:Int) {

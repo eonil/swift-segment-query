@@ -1,13 +1,6 @@
-//
-//  File.swift
-//
-//
-//  Created by Henry Hathaway on 12/10/19.
-//
-
 import Foundation
-import TestUtil
 import SegmentQuery
+import SegmentQueryTestUtil
 
 func fuzzSubSum(_ n:Int) {
     var prng = ReproduciblePRNG(n)

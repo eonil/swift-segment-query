@@ -1,5 +1,5 @@
 import XCTest
-@testable import SegmentQuery
+import SegmentQuery
 
 final class SegmentQueryTests: XCTestCase {
     func test1() {

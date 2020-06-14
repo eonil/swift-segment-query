@@ -6,8 +6,8 @@
 //
 
 import Foundation
-import TestUtil
 @testable import SegmentQuery
+import SegmentQueryTestUtil
 
 func fuzzBasics(_ n:Int) {
     do {

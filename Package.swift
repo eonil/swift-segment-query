@@ -14,21 +14,18 @@ let package = Package(
         .executable(name: "SegmentQueryFuzzOptimized", targets: ["SegmentQueryFuzzOptimized"]),
         .executable(name: "SegmentQueryBenchmark", targets: ["SegmentQueryBenchmark"]),
     ],
-    dependencies: [
-        .package(url: "https://github.com/eonil/swift-test-util", .branch("master")),
-        .package(url: "https://github.com/eonil/BTree", .branch("master")),
-        .package(url: "https://github.com/eonil/swift-sbtl", .branch("master")),
-    ],
     targets: [
         .target(name: "SegmentQuery", dependencies: []),
+        .target(name: "SegmentQueryTestUtil", dependencies: []),
 //        .target(
 //            name: "SegmentQuery",
 //            dependencies: [],
 //            swiftSettings: [SwiftSetting.unsafeFlags(["-Ounchecked", "-whole-module-optimization"])],
 //            linkerSettings: [LinkerSetting.unsafeFlags([""])]),
-        .target(name: "SegmentQueryFuzz", dependencies: ["SegmentQuery", "TestUtil"]),
-        .target(name: "SegmentQueryFuzzOptimized", dependencies: ["SegmentQuery", "TestUtil"]),
-        .target(name: "SegmentQueryBenchmark", dependencies: ["SegmentQuery", "TestUtil", "SBTL", "BTree"]),
-        .testTarget(name: "SegmentQueryTests", dependencies: ["SegmentQuery"]),
-    ]
+        .target(name: "SegmentQueryFuzz", dependencies: ["SegmentQuery","SegmentQueryTestUtil"]),
+        .target(name: "SegmentQueryFuzzOptimized", dependencies: ["SegmentQuery","SegmentQueryTestUtil"]),
+        .target(name: "SegmentQueryBenchmark", dependencies: ["SegmentQuery","SegmentQueryTestUtil"]),
+        .testTarget(name: "SegmentQueryTests", dependencies: ["SegmentQuery","SegmentQueryTestUtil"]),
+    ],
+    swiftLanguageVersions: [.v5]
 )

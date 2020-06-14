@@ -6,10 +6,9 @@
 //
 
 import Foundation
-import TestUtil
-import SBTL
-import BTree
+//import SBTL
 import SegmentQuery
+import SegmentQueryTestUtil
 
 let N = 1024 * 128
 let rns = ReproduciblePRNG(N)
@@ -96,10 +95,10 @@ Element == Int {
     }
 }
 
-extension Int: SBTLValueProtocol { public var sum:Int { self } }
+//extension Int: SBTLValueProtocol { public var sum:Int { self } }
 let M = 1024 * 1024
 //Swift.Array<Int>.runBenchmark(preinsertionCount: M)
-List<Int>.runBenchmark(preinsertionCount: M)
+//BTList<Int>.runBenchmark(preinsertionCount: M)
 //SBTL<Int>.runBenchmark(preinsertionCount: M)
 SegmentQuery<Int>.runBenchmark(preinsertionCount: M)
 
